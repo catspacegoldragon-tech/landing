@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кухни эконом | CatSpace Мебель</title>
+    <title>Кухни модульные | CatSpace Мебель</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .filters {
@@ -100,7 +100,6 @@
 <header>
     <div class="container">
         <div class="logo">
-            <!-- ИСПРАВЛЕННЫЙ ЛОГОТИП — ССЫЛКА НА ГЛАВНУЮ -->
             <a href="index.html" style="text-decoration: none; color: inherit;">
                 <h1>CatSpace Мебель</h1>
             </a>
@@ -108,7 +107,6 @@
         </div>
         <nav class="navbar">
             <a href="index.html">Главная</a>
-            <a href="index.html#promo">Акции</a>
             <a href="index.html#delivery">Доставка</a>
             <a href="index.html#about">О нас</a>
             <a href="index.html#reviews">Отзывы</a>
@@ -119,7 +117,7 @@
 
 <section class="hero" style="padding: 60px 0;">
     <div class="container">
-        <h2>Кухни эконом-класса</h2>
+        <h2>Кухни модульные</h2>
         <p>Качественные кухонные модули по доступным ценам</p>
     </div>
 </section>
@@ -127,30 +125,17 @@
 <div class="container">
 
     <div class="filters">
-        <label>Цвет верха
-            <select id="filterColorTop">
-                <option value="all">Все</option>
-                <option value="белый">Белый</option>
-                <option value="серый">Серый</option>
-                <option value="дуб">Дуб</option>
-                <option value="венге">Венге</option>
-            </select>
-        </label>
-        <label>Цвет низа
-            <select id="filterColorBottom">
-                <option value="all">Все</option>
-                <option value="белый">Белый</option>
-                <option value="серый">Серый</option>
-                <option value="дуб">Дуб</option>
-                <option value="венге">Венге</option>
-            </select>
-        </label>
-        <label>Размер
+        <label>Размер (мм)
             <select id="filterSize">
                 <option value="all">Все</option>
-                <option value="small">Маленькая (до 2 м)</option>
-                <option value="medium">Средняя (2-3 м)</option>
-                <option value="large">Большая (от 3 м)</option>
+                <option value="1100">1100</option>
+                <option value="1200">1200</option>
+                <option value="1400">1400</option>
+                <option value="1500">1500</option>
+                <option value="1600">1600</option>
+                <option value="1700">1700</option>
+                <option value="1800">1800</option>
+                <option value="2000">2000</option>
             </select>
         </label>
         <button class="btn" onclick="applyFilters()" style="align-self: flex-end;">Применить</button>
@@ -170,8 +155,8 @@
 
         <form action="https://formsubmit.co/catspacegoldragon@gmail.com" method="POST" class="contact-form" id="contactForm">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_subject" value="Заявка с кухонь эконом">
-            <input type="hidden" name="_next" value="thanks.html">
+            <input type="hidden" name="_subject" value="Заявка с модульных кухонь">
+            <input type="hidden" name="_next" value="https://catspacegoldragon-tech.github.io/landing5/thanks.html">
             <input type="hidden" name="_template" value="table">
 
             <div class="form-group">
@@ -202,18 +187,20 @@
 </footer>
 
 <script>
+    // ---- ДАННЫЕ ТОВАРОВ (с числовым размером) ----
     const products = [
-        { id: 1, name: 'КУХНЯ «АВИТО»', price: 15000, img: 'images/kitchen_test.png', colorTop: 'белый', colorBottom: 'серый', size: 'small' },
-        { id: 2, name: 'Модуль «Комфорт»', price: 120000, img: 'images/kitchen_test.png', colorTop: 'дуб', colorBottom: 'венге', size: 'medium' },
-        { id: 3, name: 'Модуль «Премиум»', price: 210000, img: 'images/kitchen_test.png', colorTop: 'венге', colorBottom: 'венге', size: 'large' },
-        { id: 4, name: 'Модуль «Эконом»', price: 55000, img: 'images/kitchen_test.png', colorTop: 'белый', colorBottom: 'белый', size: 'small' },
-        { id: 5, name: 'Модуль «Лофт»', price: 95000, img: 'images/kitchen_test.png', colorTop: 'серый', colorBottom: 'серый', size: 'medium' },
-        { id: 6, name: 'Модуль «Кантри»', price: 110000, img: 'images/kitchen_test.png', colorTop: 'дуб', colorBottom: 'дуб', size: 'medium' },
-        { id: 7, name: 'Модуль «Минимал»', price: 78000, img: 'images/kitchen_test.png', colorTop: 'белый', colorBottom: 'белый', size: 'small' },
-        { id: 8, name: 'Модуль «Неоклассика»', price: 160000, img: 'images/kitchen_test.png', colorTop: 'венге', colorBottom: 'дуб', size: 'large' },
-        { id: 9, name: 'Модуль «Хай-тек»', price: 190000, img: 'images/kitchen_test.png', colorTop: 'серый', colorBottom: 'серый', size: 'large' }
+        { id: 1, name: 'КУХНЯ «АВИТО»', price: 15000, img: 'images/kitchen_test.png', size: 1200 },
+        { id: 2, name: 'Модуль «Комфорт»', price: 120000, img: 'images/kitchen_test.png', size: 1500 },
+        { id: 3, name: 'Модуль «Премиум»', price: 210000, img: 'images/kitchen_test.png', size: 1800 },
+        { id: 4, name: 'Модуль «Эконом»', price: 55000, img: 'images/kitchen_test.png', size: 1100 },
+        { id: 5, name: 'Модуль «Лофт»', price: 95000, img: 'images/kitchen_test.png', size: 1400 },
+        { id: 6, name: 'Модуль «Кантри»', price: 110000, img: 'images/kitchen_test.png', size: 1600 },
+        { id: 7, name: 'Модуль «Минимал»', price: 78000, img: 'images/kitchen_test.png', size: 1200 },
+        { id: 8, name: 'Модуль «Неоклассика»', price: 160000, img: 'images/kitchen_test.png', size: 1700 },
+        { id: 9, name: 'Модуль «Хай-тек»', price: 190000, img: 'images/kitchen_test.png', size: 2000 }
     ];
 
+    // ---- ФУНКЦИИ КОРЗИНЫ ----
     function getCart() {
         try { return JSON.parse(localStorage.getItem('cart')) || []; } catch { return []; }
     }
@@ -258,6 +245,7 @@
         totalEl.textContent = `Итого: ${total.toLocaleString()} ₽`;
     }
 
+    // ---- ОТОБРАЖЕНИЕ ТОВАРОВ ----
     function renderProducts(filteredProducts) {
         const container = document.getElementById('productContainer');
         if (filteredProducts.length === 0) {
@@ -271,25 +259,23 @@
                     <h3>${p.name}</h3>
                 </a>
                 <p class="price">от ${p.price.toLocaleString()} ₽</p>
-                <p>Цвет верха: ${p.colorTop}, низа: ${p.colorBottom}</p>
-                <p>Размер: ${p.size === 'small' ? 'до 2 м' : p.size === 'medium' ? '2-3 м' : 'от 3 м'}</p>
+                <p>Размер: ${p.size} мм</p>
                 <button class="btn-order" onclick="addToCart('${p.name}', ${p.price})">Заказать</button>
             </div>
         `).join('');
     }
 
+    // ---- ФИЛЬТРАЦИЯ ПО РАЗМЕРУ ----
     function applyFilters() {
-        const colorTop = document.getElementById('filterColorTop').value;
-        const colorBottom = document.getElementById('filterColorBottom').value;
         const size = document.getElementById('filterSize').value;
         const filtered = products.filter(p => {
-            return (colorTop === 'all' || p.colorTop === colorTop) &&
-                   (colorBottom === 'all' || p.colorBottom === colorBottom) &&
-                   (size === 'all' || p.size === size);
+            if (size === 'all') return true;
+            return p.size === parseInt(size, 10);
         });
         renderProducts(filtered);
     }
 
+    // ---- ПОДГОТОВКА КОММЕНТАРИЯ С ЦЕНАМИ ----
     function prepareMessage() {
         const cart = getCart();
         const messageField = document.getElementById('message');
@@ -309,6 +295,7 @@
         prepareMessage();
     });
 
+    // ---- ЗАГРУЗКА СТРАНИЦЫ ----
     window.onload = function() {
         renderCart();
         renderProducts(products);

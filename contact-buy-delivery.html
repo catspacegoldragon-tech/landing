@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты, покупка, доставка | CatSpace Мебель</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .info-block {
+            background: white;
+            border-radius: 16px;
+            padding: 30px 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .info-block h2 {
+            font-size: 28px;
+            color: #2c3e2f;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #d4b87a;
+            padding-bottom: 10px;
+        }
+        .info-block p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        .info-block ul {
+            list-style: none;
+            padding: 0;
+        }
+        .info-block ul li {
+            font-size: 18px;
+            line-height: 1.7;
+            padding: 6px 0;
+            padding-left: 28px;
+            position: relative;
+        }
+        .info-block ul li::before {
+            content: "•";
+            color: #d4b87a;
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+            top: 4px;
+        }
+        .contact-item {
+            font-size: 20px;
+            font-weight: 500;
+            padding: 8px 0;
+        }
+        .contact-item strong {
+            color: #2c3e2f;
+            display: inline-block;
+            width: 100px;
+        }
+        .back-link {
+            display: inline-block;
+            margin: 20px 0 40px;
+            color: #2c3e2f;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .info-block { padding: 20px; }
+            .contact-item strong { width: auto; display: block; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <h1>CatSpace Мебель</h1>
+            </a>
+            <p>Кухонные модули на заказ</p>
+        </div>
+        <nav class="navbar">
+            <a href="index.html">Главная</a>
+            <a href="index.html#delivery">Доставка</a>
+            <a href="index.html#about">О нас</a>
+            <a href="index.html#reviews">Отзывы</a>
+            <a href="#contact">Контакты</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero" style="padding: 60px 0;">
+    <div class="container">
+        <h2>Контакты, покупка, доставка</h2>
+        <p>Всё, что нужно знать о сотрудничестве с нами</p>
+    </div>
+</section>
+
+<div class="container">
+
+    <div class="info-block" id="contact">
+        <h2>📞 Контакты</h2>
+        <div class="contact-item"><strong>Телефон:</strong> +7 (999) 123-45-67</div>
+        <div class="contact-item"><strong>Email:</strong> catspace@example.com</div>
+        <div class="contact-item"><strong>Адрес:</strong> г. Москва, ул. Мебельная, д. 8, офис 12</div>
+        <div class="contact-item"><strong>Режим работы:</strong> Пн–Пт с 10:00 до 19:00</div>
+        <p style="margin-top: 15px;">
+            Вы также можете связаться с нами через форму обратной связи на главной странице или написать в мессенджеры (ссылки появятся позже).
+        </p>
+    </div>
+
+    <div class="info-block">
+        <h2>🛒 Как происходит покупка</h2>
+        <p><strong>1. Выбор товара</strong> — вы выбираете понравившийся модуль в разделе «Кухни модульные» или оставляете заявку на индивидуальный проект в разделе «Мебель на заказ».</p>
+        <p><strong>2. Добавление в корзину</strong> — нажмите «Заказать» на карточке товара, и он добавится в корзину. Вы можете добавить несколько позиций.</p>
+        <p><strong>3. Оформление заявки</strong> — заполните форму с контактными данными и укажите пожелания. В комментарий автоматически подставится список выбранных товаров.</p>
+        <p><strong>4. Подтверждение</strong> — мы свяжемся с вами в течение рабочего дня, чтобы уточнить детали, согласовать размеры и сроки.</p>
+        <p><strong>5. Оплата</strong> — после согласования мы выставим счёт. Оплата возможна по безналичному расчёту или наличными при получении.</p>
+    </div>
+
+    <div class="info-block">
+        <h2>🚚 Доставка</h2>
+        <p><strong>Сроки доставки:</strong></p>
+        <ul>
+            <li>По Москве и области — <strong>2–3 дня</strong> после подтверждения заказа.</li>
+            <li>В другие регионы России — <strong>до 7 дней</strong> (зависит от удалённости).</li>
+        </ul>
+        <p><strong>Стоимость доставки:</strong></p>
+        <ul>
+            <li>Бесплатно при заказе от 150 000 ₽ (в пределах МКАД).</li>
+            <li>В остальных случаях — рассчитывается индивидуально.</li>
+        </ul>
+        <p><strong>Самовывоз:</strong> вы можете забрать заказ самостоятельно с нашего склада по адресу, указанному в контактах (предварительно согласовав время).</p>
+        <p style="margin-top: 10px;">
+            <strong>Важно:</strong> перед отправкой мы тщательно упаковываем модули, чтобы избежать повреждений при транспортировке.
+        </p>
+    </div>
+
+    <a href="index.html" class="back-link">← Вернуться на главную</a>
+</div>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 CatSpace Мебель. Разработка кухонных модулей и чертежей.</p>
+        <p>Email: catspace@example.com | Тел: +7 (999) 123-45-67</p>
+    </div>
+</footer>
+
+</body>
+</html>

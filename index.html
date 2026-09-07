@@ -24,6 +24,9 @@
             padding: 20px 20px 25px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             transition: transform 0.2s, box-shadow 0.2s;
+
+            height: 100%;
+            text-align: center;
             height: 100%; /* чтобы все карточки были одной высоты */
         }
         .section-btn:hover {
@@ -44,10 +47,14 @@
             margin-bottom: 8px;
             color: #2c3e2f;
             flex-shrink: 0;
+            text-align: center;
         }
         .section-btn p {
             font-size: 16px;
             color: #666;
+            flex-grow: 1;
+            margin-bottom: 15px;
+            text-align: center;
             flex-grow: 1; /* текст занимает всё доступное пространство */
             margin-bottom: 15px;
         }
@@ -60,6 +67,8 @@
             font-weight: bold;
             font-size: 14px;
             transition: background 0.3s;
+            flex-shrink: 0;
+            margin-top: auto;
             flex-shrink: 0; /* кнопка не сжимается */
             margin-top: auto; /* прижимает кнопку к низу */
         }
@@ -122,6 +131,7 @@
     <a href="contact-buy-delivery.html" class="section-btn">
         <img src="images/kitchen_test.png" alt="Контакты Покупка Доставка">
         <h3>Контакты Покупка Доставка</h3>
+        <p>Всё о покупке и доставке</p>
         <p>Ответы на основные вопросы</p>
         <span class="btn">Перейти</span>
     </a>
@@ -182,11 +192,14 @@
     <div class="container">
         <h2>Свяжитесь с нами</h2>
         <p>Оставьте заявку — и мы пришлём вам примеры чертежей и расчёт стоимости.</p>
+
+        <!-- ИСПРАВЛЕННАЯ ФОРМА -->
         <form action="https://formsubmit.co/catspacegoldragon@gmail.com" method="POST" class="contact-form" id="contactForm">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_subject" value="Новая заявка с лендинга CatSpace">
-            <input type="hidden" name="_next" value="thanks.html">
+            <input type="hidden" name="_next" value="https://catspacegoldragon-tech.github.io/landing5/thanks.html">
             <input type="hidden" name="_template" value="table">
+
             <div class="form-group">
                 <label for="name">Ваше имя</label>
                 <input type="text" id="name" name="name" placeholder="Анна" required>
