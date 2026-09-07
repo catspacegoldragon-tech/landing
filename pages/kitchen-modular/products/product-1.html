@@ -74,23 +74,24 @@
             display: flex;
         }
         .lightbox .lightbox-content {
-            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             max-width: 90%;
             max-height: 90%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            gap: 20px;
         }
         .lightbox .lightbox-content img {
-            max-width: 100%;
+            max-width: 80%;
             max-height: 90vh;
             object-fit: contain;
             border-radius: 8px;
             box-shadow: 0 4px 30px rgba(0,0,0,0.5);
             cursor: default;
+            flex-shrink: 0;
         }
         .lightbox .close-btn {
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 30px;
             font-size: 40px;
@@ -104,32 +105,24 @@
             color: #d4b87a;
         }
         .lightbox .nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 40px;
+            font-size: 50px;
             color: white;
             cursor: pointer;
-            padding: 15px 10px;
-            background: rgba(0,0,0,0.4);
-            border-radius: 4px;
+            padding: 15px 20px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 50%;
             transition: 0.3s;
-            z-index: 1001;
             user-select: none;
+            flex-shrink: 0;
+            line-height: 1;
         }
         .lightbox .nav-btn:hover {
             background: rgba(0,0,0,0.7);
             color: #d4b87a;
         }
-        .lightbox .prev-btn {
-            left: 20px;
-        }
-        .lightbox .next-btn {
-            right: 20px;
-        }
         .lightbox .counter {
-            position: absolute;
-            bottom: 20px;
+            position: fixed;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             color: white;
@@ -218,8 +211,7 @@
 </div>
 
 <script>
-    // ======== МАССИВ ВСЕХ КАРТИНОК ДЛЯ ДАННОГО ТОВАРА ========
-    // (при копировании файла для другого товара меняйте пути и имена)
+    // ======== МАССИВ ВСЕХ КАРТИНОК ========
     const productImages = [
         '../../../images/kitchen-modular/1/main.png',
         '../../../images/kitchen-modular/1/1.png',
