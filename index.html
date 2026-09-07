@@ -24,7 +24,8 @@
             padding: 20px 20px 25px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             transition: transform 0.2s, box-shadow 0.2s;
-            height: 100%; /* чтобы все карточки были одной высоты */
+            height: 100%;
+            text-align: center; /* центрируем всё содержимое */
         }
         .section-btn:hover {
             transform: translateY(-5px);
@@ -44,12 +45,14 @@
             margin-bottom: 8px;
             color: #2c3e2f;
             flex-shrink: 0;
+            text-align: center; /* явное центрирование */
         }
         .section-btn p {
             font-size: 16px;
             color: #666;
-            flex-grow: 1; /* текст занимает всё доступное пространство */
+            flex-grow: 1;
             margin-bottom: 15px;
+            text-align: center; /* явное центрирование */
         }
         .section-btn .btn {
             display: inline-block;
@@ -60,8 +63,8 @@
             font-weight: bold;
             font-size: 14px;
             transition: background 0.3s;
-            flex-shrink: 0; /* кнопка не сжимается */
-            margin-top: auto; /* прижимает кнопку к низу */
+            flex-shrink: 0;
+            margin-top: auto;
         }
         .section-btn .btn:hover {
             background: #4a6741;
