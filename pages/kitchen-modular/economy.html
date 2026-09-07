@@ -30,9 +30,11 @@
             font-size: 14px;
             color: #555;
         }
+        /* Изменяем контейнер на flex */
         .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* центрируем карточки */
             gap: 30px;
             margin-bottom: 40px;
         }
@@ -45,18 +47,21 @@
             padding-bottom: 20px;
             transition: transform 0.2s;
             cursor: pointer;
+            flex: 0 1 auto; /* не растягивается, ширина по содержимому */
+            max-width: 1100px; /* ограничиваем максимальную ширину */
+            width: auto; /* ширина определяется содержимым */
+            min-width: 280px; /* минимальная ширина для читаемости */
         }
         .product-card:hover {
             transform: translateY(-5px);
         }
-        /* Ссылка, обёртывающая всю карточку (кроме кнопки) */
         .product-card .card-link {
             display: block;
             text-decoration: none;
             color: inherit;
         }
         .product-card .card-link img {
-            width: 100%;
+            width: 100%; /* изображение занимает всю ширину карточки */
             height: auto;
             display: block;
             background-color: #f0f0f0;
@@ -87,7 +92,7 @@
             cursor: pointer;
             transition: background 0.3s;
             position: relative;
-            z-index: 2; /* чтобы кнопка была поверх ссылки */
+            z-index: 2;
         }
         .btn-order:hover {
             background-color: #4a6741;
@@ -134,6 +139,14 @@
         .back-link:hover { text-decoration: underline; }
         .cart-highlight { border: 2px solid #d4b87a; transition: border 0.3s; }
         section[id] { scroll-margin-top: 80px; }
+        /* Адаптивность: на маленьких экранах карточки занимают всю ширину */
+        @media (max-width: 768px) {
+            .product-card {
+                max-width: 100%;
+                min-width: 0;
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -229,7 +242,7 @@
 
 <script>
     const products = [
-        { id: 1, name: 'Кухня 1', price: 15000, img: '../../images/kitchen-modular/1/main.png', size: 1600 },
+        { id: 1, name: 'Кухня 1', price: 15000, img: '../../images/kitchen-modular/1/main.png', size: 1200 },
         { id: 2, name: 'Кухня 2', price: 120000, img: '../../images/kitchen-modular/2/main.png', size: 1500 },
         { id: 3, name: 'Кухня 3', price: 210000, img: '../../images/kitchen-modular/3/main.png', size: 1800 },
         { id: 4, name: 'Кухня 4', price: 55000, img: '../../images/kitchen-modular/4/main.png', size: 1100 },
@@ -246,7 +259,7 @@
     function saveCart(cart) { localStorage.setItem('cart', JSON.stringify(cart)); }
 
     function addToCart(name, price, event) {
-        if (event) event.stopPropagation(); // чтобы не переходить по ссылке
+        if (event) event.stopPropagation();
         let cart = getCart();
         cart.push({ name, price });
         saveCart(cart);
@@ -288,7 +301,7 @@
     function renderProducts(filteredProducts) {
         const container = document.getElementById('productContainer');
         if (filteredProducts.length === 0) {
-            container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">Товаров не найдено</p>';
+            container.innerHTML = '<p style="width: 100%; text-align: center; padding: 40px;">Товаров не найдено</p>';
             return;
         }
         container.innerHTML = filteredProducts.map(p => `
