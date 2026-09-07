@@ -32,8 +32,8 @@
         }
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* уменьшил минимальную ширину */
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             margin-bottom: 40px;
         }
         .product-card {
@@ -42,52 +42,39 @@
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             text-align: center;
-            padding-bottom: 15px;
+            padding-bottom: 20px;
             transition: transform 0.2s;
-            display: flex;
-            flex-direction: column;
         }
         .product-card:hover {
             transform: translateY(-5px);
         }
-        /* === ИЗМЕНЕНИЯ ДЛЯ КАРТИНОК === */
         .product-card img {
             width: 100%;
-            height: auto;
-            aspect-ratio: 1 / 1; /* сохраняем квадратную сетку, но картинка вписывается */
-            object-fit: contain; /* картинка помещается целиком, без обрезания */
-            background-color: #f0f0f0; /* фон, если картинка меньше блока */
-            padding: 5px; /* небольшой отступ, чтобы картинка не касалась краёв */
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            background-color: #f0f0f0;
         }
         .product-card h3 {
-            font-size: 20px;
-            margin: 10px 0 5px;
+            font-size: 22px;
+            margin: 15px 0 5px;
         }
         .price {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             color: #b8860b;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         .product-card p {
-            padding: 0 12px 12px;
-            font-size: 14px;
-            color: #555;
-            flex-grow: 1;
+            padding: 0 15px 15px;
         }
         .btn-order {
-            display: inline-block;
-            padding: 6px 18px;
             background-color: #2c3e2f;
             color: white;
             border: none;
+            padding: 8px 20px;
             border-radius: 25px;
             cursor: pointer;
-            text-decoration: none;
-            font-family: inherit;
-            font-size: 14px;
             transition: background 0.3s;
-            margin: 0 10px 10px;
         }
         .btn-order:hover {
             background-color: #4a6741;
@@ -228,6 +215,7 @@
 </footer>
 
 <script>
+    // ---- ТОВАРЫ С ПРАВИЛЬНЫМИ ПУТЯМИ К КАРТИНКАМ ----
     const products = [
         { id: 1, name: 'Кухня 1', price: 15000, img: '../../images/kitchen-modular/1/main.png', size: 1200 },
         { id: 2, name: 'Кухня 2', price: 120000, img: '../../images/kitchen-modular/2/main.png', size: 1500 },
@@ -240,6 +228,7 @@
         { id: 9, name: 'Кухня 9', price: 190000, img: '../../images/kitchen-modular/9/main.png', size: 2000 }
     ];
 
+    // ---- ФУНКЦИИ КОРЗИНЫ ----
     function getCart() {
         try { return JSON.parse(localStorage.getItem('cart')) || []; } catch { return []; }
     }
@@ -284,6 +273,7 @@
         totalEl.textContent = `Итого: ${total.toLocaleString()} ₽`;
     }
 
+    // ---- ОТОБРАЖЕНИЕ ТОВАРОВ ----
     function renderProducts(filteredProducts) {
         const container = document.getElementById('productContainer');
         if (filteredProducts.length === 0) {
@@ -303,6 +293,7 @@
         `).join('');
     }
 
+    // ---- ФИЛЬТРАЦИЯ ПО РАЗМЕРУ ----
     function applyFilters() {
         const size = document.getElementById('filterSize').value;
         const filtered = products.filter(p => {
@@ -312,6 +303,7 @@
         renderProducts(filtered);
     }
 
+    // ---- ПОДГОТОВКА КОММЕНТАРИЯ С ЦЕНАМИ ----
     function prepareMessage() {
         const cart = getCart();
         const messageField = document.getElementById('message');
@@ -331,6 +323,7 @@
         prepareMessage();
     });
 
+    // ---- ЗАГРУЗКА СТРАНИЦЫ ----
     window.onload = function() {
         renderCart();
         renderProducts(products);
