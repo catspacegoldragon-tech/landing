@@ -3,13 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ========== ЗАГОЛОВОК СТРАНИЦЫ (менять на "Кухня 2", "Кухня 3" и т.д.) ========== -->
     <title>Кухня 1 | CatSpace Мебель</title>
     <link rel="stylesheet" href="../../../style.css">
     <style>
         .product-page { padding: 40px 0; }
         .product-page .product-main { display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
-        .product-page .product-main .gallery { flex: 1 1 400px; }
-        .product-page .product-main .gallery img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .product-page .product-main .gallery {
+            flex: 1 1 400px;
+        }
+        .product-page .product-main .gallery img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: block;
+        }
         .product-page .product-main .info { flex: 1 1 400px; }
         .product-page .product-main .info h1 { font-size: 36px; margin-bottom: 15px; color: #2c3e2f; }
         .product-page .product-main .info .price { font-size: 28px; font-weight: bold; color: #b8860b; margin-bottom: 20px; }
@@ -17,8 +27,21 @@
         .product-page .product-main .info .specs { background: #f4f4f4; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
         .product-page .product-main .info .specs ul { list-style: none; padding: 0; }
         .product-page .product-main .info .specs li { padding: 5px 0; }
-        .product-page .additional-images { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 40px; }
-        .product-page .additional-images img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .product-page .additional-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .product-page .additional-images img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: block;
+            background-color: #f0f0f0;
+        }
         .back-link { display: inline-block; margin-top: 30px; color: #2c3e2f; text-decoration: none; font-weight: bold; }
         .back-link:hover { text-decoration: underline; }
         @media (max-width: 768px) { .product-page .product-main { flex-direction: column; } }
@@ -47,10 +70,13 @@
     <div class="container">
         <div class="product-main">
             <div class="gallery">
-                <img src="../../../images/kitchen_test.png" alt="Кухня 1">
+                <!-- ========== ПУТЬ К ОСНОВНОЙ КАРТИНКЕ (менять номер папки: 1 → 2, 3, ...) ========== -->
+                <img src="../../../images/kitchen-modular/1/main.png" alt="Кухня 1">
             </div>
             <div class="info">
+                <!-- ========== НАЗВАНИЕ ТОВАРА (менять: Кухня 1 → Кухня 2, 3, ...) ========== -->
                 <h1>Кухня 1</h1>
+                <!-- ========== ЦЕНА (менять при необходимости) ========== -->
                 <div class="price">от 15 000 ₽</div>
                 <div class="description">
                     <p>Кухня для ценителей качества. Корпус из ЛДСП, фасады МДФ, доводчики.</p>
@@ -65,6 +91,7 @@
                         <li>🔹 Цвет: на выбор из .... оттенков</li>
                     </ul>
                 </div>
+                <!-- ========== НАЗВАНИЕ В КНОПКЕ (менять: Кухня 1 → Кухня 2, 3, ...) ========== -->
                 <button class="btn" onclick="addToCartAndGo('Кухня 1', 15000)">Добавить в заказ</button>
                 <br>
                 <a href="../economy.html" class="back-link">← Вернуться в каталог</a>
@@ -73,10 +100,11 @@
 
         <h3>Дополнительные фото</h3>
         <div class="additional-images">
-            <img src="../../../images/elit-dop1.jpg" alt="Дополнительное фото 1" onerror="this.src='https://placehold.co/400x400?text=Фото+1'">
-            <img src="../../../images/elit-dop2.jpg" alt="Дополнительное фото 2" onerror="this.src='https://placehold.co/400x400?text=Фото+2'">
-            <img src="../../../images/elit-dop3.jpg" alt="Дополнительное фото 3" onerror="this.src='https://placehold.co/400x400?text=Фото+3'">
-            <img src="../../../images/elit-dop4.jpg" alt="Дополнительное фото 4" onerror="this.src='https://placehold.co/400x400?text=Фото+4'">
+            <!-- ========== ПУТИ К ДОПОЛНИТЕЛЬНЫМ КАРТИНКАМ (менять номер папки: 1 → 2, 3, ...) ========== -->
+            <img src="../../../images/kitchen-modular/1/1.png" alt="Дополнительное фото 1" onerror="this.src='https://placehold.co/400x400?text=Фото+1'">
+            <img src="../../../images/kitchen-modular/1/2.png" alt="Дополнительное фото 2" onerror="this.src='https://placehold.co/400x400?text=Фото+2'">
+            <img src="../../../images/kitchen-modular/1/3.png" alt="Дополнительное фото 3" onerror="this.src='https://placehold.co/400x400?text=Фото+3'">
+            <img src="../../../images/kitchen-modular/1/4.png" alt="Дополнительное фото 4" onerror="this.src='https://placehold.co/400x400?text=Фото+4'">
         </div>
     </div>
 </section>
@@ -94,6 +122,7 @@
     }
     function saveCart(cart) { localStorage.setItem('cart', JSON.stringify(cart)); }
 
+    // ========== НАЗВАНИЕ И ЦЕНА В ФУНКЦИИ (менять: Кухня 1 → Кухня 2, 3, ...) ==========
     function addToCartAndGo(name, price) {
         let cart = getCart();
         cart.push({ name, price });
