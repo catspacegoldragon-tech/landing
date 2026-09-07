@@ -49,21 +49,19 @@
         .product-card:hover {
             transform: translateY(-5px);
         }
-        /* Ссылка, обёртывающая всю карточку (кроме кнопки) */
         .product-card .card-link {
             display: block;
             text-decoration: none;
             color: inherit;
+            overflow: hidden; /* чтобы изображение не выходило за скруглённые углы */
         }
+        /* === ИЗМЕНЕНИЯ ДЛЯ КАРТИНКИ === */
         .product-card .card-link img {
             width: 100%;
-            height: auto;
+            aspect-ratio: 1 / 1; /* квадратный контейнер */
+            object-fit: cover;   /* картинка заполняет всю область, обрезая лишнее */
             display: block;
-            background-color: #f0f0f0;
-            transition: transform 0.3s ease;
-        }
-        .product-card .card-link img:hover {
-            transform: scale(1.02);
+            background: transparent; /* убираем серый фон */
         }
         .product-card h3 {
             font-size: 22px;
