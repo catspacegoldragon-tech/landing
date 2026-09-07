@@ -48,11 +48,13 @@
         .product-card:hover {
             transform: translateY(-5px);
         }
+        /* === ИЗМЕНЕНИЯ ДЛЯ КАРТИНОК === */
         .product-card img {
             width: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
+            height: auto;          /* высота подстраивается под пропорции */
+            display: block;        /* убирает лишний отступ снизу */
             background-color: #f0f0f0;
+            /* object-fit не нужен, т.к. картинка полностью видна */
         }
         .product-card h3 {
             font-size: 22px;
@@ -215,7 +217,6 @@
 </footer>
 
 <script>
-    // ---- ТОВАРЫ С ПРАВИЛЬНЫМИ ПУТЯМИ К КАРТИНКАМ ----
     const products = [
         { id: 1, name: 'Кухня 1', price: 15000, img: '../../images/kitchen-modular/1/main.png', size: 1200 },
         { id: 2, name: 'Кухня 2', price: 120000, img: '../../images/kitchen-modular/2/main.png', size: 1500 },
@@ -228,7 +229,6 @@
         { id: 9, name: 'Кухня 9', price: 190000, img: '../../images/kitchen-modular/9/main.png', size: 2000 }
     ];
 
-    // ---- ФУНКЦИИ КОРЗИНЫ ----
     function getCart() {
         try { return JSON.parse(localStorage.getItem('cart')) || []; } catch { return []; }
     }
@@ -273,7 +273,6 @@
         totalEl.textContent = `Итого: ${total.toLocaleString()} ₽`;
     }
 
-    // ---- ОТОБРАЖЕНИЕ ТОВАРОВ ----
     function renderProducts(filteredProducts) {
         const container = document.getElementById('productContainer');
         if (filteredProducts.length === 0) {
@@ -293,7 +292,6 @@
         `).join('');
     }
 
-    // ---- ФИЛЬТРАЦИЯ ПО РАЗМЕРУ ----
     function applyFilters() {
         const size = document.getElementById('filterSize').value;
         const filtered = products.filter(p => {
@@ -303,7 +301,6 @@
         renderProducts(filtered);
     }
 
-    // ---- ПОДГОТОВКА КОММЕНТАРИЯ С ЦЕНАМИ ----
     function prepareMessage() {
         const cart = getCart();
         const messageField = document.getElementById('message');
@@ -323,7 +320,6 @@
         prepareMessage();
     });
 
-    // ---- ЗАГРУЗКА СТРАНИЦЫ ----
     window.onload = function() {
         renderCart();
         renderProducts(products);
