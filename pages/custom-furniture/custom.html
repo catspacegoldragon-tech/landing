@@ -89,16 +89,10 @@
                 <p>Современный стиль, эргономичное решение</p>
             </a>
         </div>
-        <div class="product-card">
-            <a href="../../kitchen-modular/products/product-1.html">
-                <img src="../../images/kitchen_test.png" alt="Проект 2" onerror="this.src='https://placehold.co/300x200?text=Проект+2'">
-                <h3>Кухня «Комфорт»</h3>
-                <p>Классика с элементами модерна</p>
-            </a>
-        </div>
-        <!-- ... остальные карточки добавьте по аналогии ... -->
+        <!-- Добавьте остальные карточки по аналогии -->
     </div>
 
+    <!-- === ФОРМА (исправлена) === -->
     <section id="contact" class="contact">
         <h2>Оставить заявку</h2>
         <p>Опишите вашу идею, и мы свяжемся с вами для консультации</p>
@@ -106,6 +100,7 @@
         <form action="https://formsubmit.co/catspacegoldragon@gmail.com" method="POST" class="contact-form" id="contactForm">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_subject" value="Заявка на индивидуальную мебель">
+            <!-- ИСПРАВЛЕНО: теперь полный URL, как на других страницах -->
             <input type="hidden" name="_next" value="https://catspacegoldragon-tech.github.io/landing/thanks.html">
             <input type="hidden" name="_template" value="table">
 
@@ -135,6 +130,10 @@
         <p>Email: catspace@example.com | Тел: +7 (999) 123-45-67</p>
     </div>
 </footer>
+
+<script>
+    // Скрипт не требуется, форма отправляется стандартно
+</script>
 
 </body>
 </html>
