@@ -42,23 +42,25 @@
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             text-align: center;
-            padding-bottom: 20px;
             transition: transform 0.2s;
             cursor: pointer;
             display: flex;
-            flex-direction: column; /* чтобы текст шёл под картинкой */
+            flex-direction: column;
+            padding-bottom: 15px; /* отступ снизу */
         }
         .product-card:hover {
             transform: translateY(-5px);
         }
+        /* Блок с картинкой – сохраняет пропорции */
         .product-card .card-link {
             display: block;
             text-decoration: none;
             color: inherit;
-            aspect-ratio: 1032 / 1523; /* соответствует вашим картинкам */
+            aspect-ratio: 1032 / 1523; /* пропорции ваших картинок */
             overflow: hidden;
             background: transparent;
-            flex-shrink: 0; /* чтобы картинка не сжималась */
+            flex-shrink: 0; /* не сжимается */
+            width: 100%;
         }
         .product-card .card-link img {
             width: 100%;
@@ -67,18 +69,29 @@
             display: block;
             background: transparent;
         }
+        /* Текст под картинкой */
+        .product-card .card-text {
+            padding: 12px 15px 5px;
+            flex-grow: 1; /* занимает оставшееся место */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
         .product-card h3 {
             font-size: 22px;
-            margin: 15px 0 5px;
+            margin: 0 0 5px;
+            font-weight: 600;
         }
-        .price {
+        .product-card .price {
             font-size: 20px;
             font-weight: bold;
             color: #b8860b;
-            margin-bottom: 10px;
+            margin: 0 0 5px;
         }
-        .product-card p {
-            padding: 0 15px 15px;
+        .product-card .size {
+            font-size: 16px;
+            color: #555;
+            margin: 0 0 10px;
         }
         .btn-order {
             background-color: #2c3e2f;
@@ -90,7 +103,8 @@
             transition: background 0.3s;
             position: relative;
             z-index: 2;
-            margin-top: 5px; /* чтобы не прилипало к тексту */
+            align-self: center; /* центрируем кнопку */
+            margin-top: auto; /* прижимаем к низу, если нужно */
         }
         .btn-order:hover {
             background-color: #4a6741;
@@ -298,11 +312,13 @@
             <div class="product-card">
                 <a href="products/product-${p.id}.html" class="card-link">
                     <img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/300x200?text=${p.name}'">
+                </a>
+                <div class="card-text">
                     <h3>${p.name}</h3>
                     <p class="price">от ${p.price.toLocaleString()} ₽</p>
-                    <p>Размер: ${p.size} мм</p>
-                </a>
-                <button class="btn-order" onclick="addToCart('${p.name}', ${p.price}, event)">Заказать</button>
+                    <p class="size">Размер: ${p.size} мм</p>
+                    <button class="btn-order" onclick="addToCart('${p.name}', ${p.price}, event)">Заказать</button>
+                </div>
             </div>
         `).join('');
     }
