@@ -48,27 +48,25 @@
         .product-card:hover {
             transform: translateY(-5px);
         }
-        /* === КЛИКАБЕЛЬНАЯ ОБЛАСТЬ ТОЛЬКО НА КАРТИНКЕ === */
-        .product-card .image-link {
+        /* Ссылка оборачивает всю карточку */
+        .product-card a {
             display: block;
-            overflow: hidden;
-            line-height: 0; /* убирает отступ снизу */
-            border-radius: 12px 12px 0 0; /* скругляем верхние углы */
+            text-decoration: none;
+            color: inherit;
         }
-        .product-card .image-link img {
+        .product-card a img {
             width: 100%;
             height: auto;
             display: block;
             background-color: #f0f0f0;
             transition: transform 0.3s ease;
         }
-        .product-card .image-link img:hover {
-            transform: scale(1.03);
+        .product-card a img:hover {
+            transform: scale(1.02);
         }
         .product-card h3 {
             font-size: 22px;
             margin: 15px 0 5px;
-            pointer-events: none; /* чтобы клик не перехватывался */
         }
         .price {
             font-size: 20px;
@@ -291,10 +289,10 @@
         }
         container.innerHTML = filteredProducts.map(p => `
             <div class="product-card">
-                <a href="products/product-${p.id}.html" class="image-link">
+                <a href="products/product-${p.id}.html" style="display: block; text-decoration: none; color: inherit;">
                     <img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/300x200?text=${p.name}'">
+                    <h3>${p.name}</h3>
                 </a>
-                <h3>${p.name}</h3>
                 <p class="price">от ${p.price.toLocaleString()} ₽</p>
                 <p>Размер: ${p.size} мм</p>
                 <button class="btn-order" onclick="addToCart('${p.name}', ${p.price})">Заказать</button>
