@@ -44,24 +44,25 @@
             text-align: center;
             padding-bottom: 20px;
             transition: transform 0.2s;
+            cursor: pointer;
         }
         .product-card:hover {
             transform: translateY(-5px);
         }
-        /* Ссылка оборачивает всю карточку */
-        .product-card a {
+        /* Ссылка, обёртывающая всю карточку (кроме кнопки) */
+        .product-card .card-link {
             display: block;
             text-decoration: none;
             color: inherit;
         }
-        .product-card a img {
+        .product-card .card-link img {
             width: 100%;
             height: auto;
             display: block;
             background-color: #f0f0f0;
             transition: transform 0.3s ease;
         }
-        .product-card a img:hover {
+        .product-card .card-link img:hover {
             transform: scale(1.02);
         }
         .product-card h3 {
@@ -85,6 +86,8 @@
             border-radius: 25px;
             cursor: pointer;
             transition: background 0.3s;
+            position: relative;
+            z-index: 2; /* чтобы кнопка была поверх ссылки */
         }
         .btn-order:hover {
             background-color: #4a6741;
@@ -242,7 +245,8 @@
     }
     function saveCart(cart) { localStorage.setItem('cart', JSON.stringify(cart)); }
 
-    function addToCart(name, price) {
+    function addToCart(name, price, event) {
+        if (event) event.stopPropagation(); // чтобы не переходить по ссылке
         let cart = getCart();
         cart.push({ name, price });
         saveCart(cart);
@@ -289,13 +293,13 @@
         }
         container.innerHTML = filteredProducts.map(p => `
             <div class="product-card">
-                <a href="products/product-${p.id}.html" style="display: block; text-decoration: none; color: inherit;">
+                <a href="products/product-${p.id}.html" class="card-link">
                     <img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/300x200?text=${p.name}'">
                     <h3>${p.name}</h3>
+                    <p class="price">от ${p.price.toLocaleString()} ₽</p>
+                    <p>Размер: ${p.size} мм</p>
                 </a>
-                <p class="price">от ${p.price.toLocaleString()} ₽</p>
-                <p>Размер: ${p.size} мм</p>
-                <button class="btn-order" onclick="addToCart('${p.name}', ${p.price})">Заказать</button>
+                <button class="btn-order" onclick="addToCart('${p.name}', ${p.price}, event)">Заказать</button>
             </div>
         `).join('');
     }
