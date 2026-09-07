@@ -14,15 +14,17 @@
             background: #f9f9f9;
         }
         .section-btn {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-decoration: none;
             color: #333;
             background: white;
             border-radius: 16px;
-            padding: 20px;
-            text-align: center;
+            padding: 20px 20px 25px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             transition: transform 0.2s, box-shadow 0.2s;
+            height: 100%; /* чтобы все карточки были одной высоты */
         }
         .section-btn:hover {
             transform: translateY(-5px);
@@ -41,14 +43,16 @@
             font-size: 22px;
             margin-bottom: 8px;
             color: #2c3e2f;
+            flex-shrink: 0;
         }
         .section-btn p {
             font-size: 16px;
             color: #666;
+            flex-grow: 1; /* текст занимает всё доступное пространство */
+            margin-bottom: 15px;
         }
         .section-btn .btn {
             display: inline-block;
-            margin-top: 12px;
             padding: 8px 25px;
             background: #2c3e2f;
             color: white;
@@ -56,6 +60,8 @@
             font-weight: bold;
             font-size: 14px;
             transition: background 0.3s;
+            flex-shrink: 0; /* кнопка не сжимается */
+            margin-top: auto; /* прижимает кнопку к низу */
         }
         .section-btn .btn:hover {
             background: #4a6741;
@@ -77,7 +83,6 @@
         </div>
         <nav class="navbar">
             <a href="#sections">Разделы</a>
-            <a href="#promo">Акции</a>
             <a href="#delivery">Доставка</a>
             <a href="#about">О нас</a>
             <a href="#reviews">Отзывы</a>
@@ -94,16 +99,17 @@
     </div>
 </section>
 
+<!-- ====================== 4 КНОПКИ ====================== -->
 <section id="sections" class="container section-buttons">
     <a href="economy.html" class="section-btn">
-        <img src="images/kitchen_test.png" alt="Кухни эконом">
-        <h3>Кухни эконом</h3>
+        <img src="images/kitchen_test.png" alt="Кухни модульные">
+        <h3>Кухни модульные</h3>
         <p>Готовые решения по доступным ценам</p>
         <span class="btn">Перейти</span>
     </a>
     <a href="custom.html" class="section-btn">
-        <img src="images/kitchen_test.png" alt="Кухни на заказ">
-        <h3>Кухни на заказ</h3>
+        <img src="images/kitchen_test.png" alt="Мебель на заказ">
+        <h3>Мебель на заказ</h3>
         <p>Индивидуальные проекты под ваш размер</p>
         <span class="btn">Перейти</span>
     </a>
@@ -113,23 +119,12 @@
         <p>Шкафы, тумбы, комоды и модули</p>
         <span class="btn">Перейти</span>
     </a>
-    <a href="horika.html" class="section-btn">
-        <img src="images/kitchen_test.png" alt="Хорика">
-        <h3>Хорика</h3>
-        <p>Скоро здесь появится описание</p>
-        <span class="btn">Скоро</span>
+    <a href="contact-buy-delivery.html" class="section-btn">
+        <img src="images/kitchen_test.png" alt="Контакты Покупка Доставка">
+        <h3>Контакты Покупка Доставка</h3>
+        <p>Всё о покупке и доставке</p>
+        <span class="btn">Перейти</span>
     </a>
-</section>
-
-<section id="promo" class="info-section">
-    <div class="container">
-        <h2>Акции и специальные предложения</h2>
-        <div class="info-content">
-            <p>🔥 При заказе кухни от 150 000 ₽ — <strong>бесплатная доставка</strong> по городу.</p>
-            <p>🎁 Скидка 10% на первую покупку для новых клиентов.</p>
-            <p>⭐ При заказе двух и более модулей — <strong>скидка 15%</strong> на фурнитуру Blum.</p>
-        </div>
-    </div>
 </section>
 
 <section id="delivery" class="info-section alt-bg">
