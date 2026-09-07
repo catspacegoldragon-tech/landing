@@ -254,7 +254,7 @@
         }
         container.innerHTML = filteredProducts.map(p => `
             <div class="product-card">
-                <a href="products/product-${p.id}.html" style="display: block; text-decoration: none; color: inherit;">
+                <a href="product-${p.id}.html" style="display: block; text-decoration: none; color: inherit;">
                     <img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/300x200?text=${p.name}'">
                     <h3>${p.name}</h3>
                 </a>
