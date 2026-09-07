@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кухни модульные | CatSpace Мебель</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!-- если файл в корне, иначе путь типа ../../style.css -->
     <style>
         .filters {
             display: flex;
@@ -156,7 +156,6 @@
         <form action="https://formsubmit.co/catspacegoldragon@gmail.com" method="POST" class="contact-form" id="contactForm">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_subject" value="Заявка с модульных кухонь">
-            <!-- ИСПРАВЛЕННАЯ ССЫЛКА НА thanks.html -->
             <input type="hidden" name="_next" value="https://catspacegoldragon-tech.github.io/landing/thanks.html">
             <input type="hidden" name="_template" value="table">
 
@@ -188,18 +187,20 @@
 </footer>
 
 <script>
+    // ---- НОВЫЙ МАССИВ ТОВАРОВ С ИМЕНАМИ "Кухня 1" ... "Кухня 9" ----
     const products = [
-        { id: 1, name: 'КУХНЯ «АВИТО»', price: 15000, img: 'images/kitchen_test.png', size: 1200 },
-        { id: 2, name: 'Модуль «Комфорт»', price: 120000, img: 'images/kitchen_test.png', size: 1500 },
-        { id: 3, name: 'Модуль «Премиум»', price: 210000, img: 'images/kitchen_test.png', size: 1800 },
-        { id: 4, name: 'Модуль «Эконом»', price: 55000, img: 'images/kitchen_test.png', size: 1100 },
-        { id: 5, name: 'Модуль «Лофт»', price: 95000, img: 'images/kitchen_test.png', size: 1400 },
-        { id: 6, name: 'Модуль «Кантри»', price: 110000, img: 'images/kitchen_test.png', size: 1600 },
-        { id: 7, name: 'Модуль «Минимал»', price: 78000, img: 'images/kitchen_test.png', size: 1200 },
-        { id: 8, name: 'Модуль «Неоклассика»', price: 160000, img: 'images/kitchen_test.png', size: 1700 },
-        { id: 9, name: 'Модуль «Хай-тек»', price: 190000, img: 'images/kitchen_test.png', size: 2000 }
+        { id: 1, name: 'Кухня 1', price: 15000, img: 'images/kitchen_test.png', size: 1200 },
+        { id: 2, name: 'Кухня 2', price: 120000, img: 'images/kitchen_test.png', size: 1500 },
+        { id: 3, name: 'Кухня 3', price: 210000, img: 'images/kitchen_test.png', size: 1800 },
+        { id: 4, name: 'Кухня 4', price: 55000, img: 'images/kitchen_test.png', size: 1100 },
+        { id: 5, name: 'Кухня 5', price: 95000, img: 'images/kitchen_test.png', size: 1400 },
+        { id: 6, name: 'Кухня 6', price: 110000, img: 'images/kitchen_test.png', size: 1600 },
+        { id: 7, name: 'Кухня 7', price: 78000, img: 'images/kitchen_test.png', size: 1200 },
+        { id: 8, name: 'Кухня 8', price: 160000, img: 'images/kitchen_test.png', size: 1700 },
+        { id: 9, name: 'Кухня 9', price: 190000, img: 'images/kitchen_test.png', size: 2000 }
     ];
 
+    // ---- ФУНКЦИИ КОРЗИНЫ ----
     function getCart() {
         try { return JSON.parse(localStorage.getItem('cart')) || []; } catch { return []; }
     }
@@ -244,6 +245,7 @@
         totalEl.textContent = `Итого: ${total.toLocaleString()} ₽`;
     }
 
+    // ---- ОТОБРАЖЕНИЕ ТОВАРОВ ----
     function renderProducts(filteredProducts) {
         const container = document.getElementById('productContainer');
         if (filteredProducts.length === 0) {
@@ -252,7 +254,7 @@
         }
         container.innerHTML = filteredProducts.map(p => `
             <div class="product-card">
-                <a href="product-1.html" style="display: block; text-decoration: none; color: inherit;">
+                <a href="products/product-${p.id}.html" style="display: block; text-decoration: none; color: inherit;">
                     <img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/300x200?text=${p.name}'">
                     <h3>${p.name}</h3>
                 </a>
@@ -263,6 +265,7 @@
         `).join('');
     }
 
+    // ---- ФИЛЬТРАЦИЯ ПО РАЗМЕРУ ----
     function applyFilters() {
         const size = document.getElementById('filterSize').value;
         const filtered = products.filter(p => {
@@ -272,6 +275,7 @@
         renderProducts(filtered);
     }
 
+    // ---- ПОДГОТОВКА КОММЕНТАРИЯ С ЦЕНАМИ ----
     function prepareMessage() {
         const cart = getCart();
         const messageField = document.getElementById('message');
@@ -291,9 +295,10 @@
         prepareMessage();
     });
 
+    // ---- ЗАГРУЗКА СТРАНИЦЫ ----
     window.onload = function() {
         renderCart();
-        renderProducts(products);
+        renderProducts(products); // показываем все товары при загрузке
     };
 </script>
 
