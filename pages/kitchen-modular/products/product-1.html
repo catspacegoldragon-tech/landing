@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- ========== ЗАГОЛОВОК СТРАНИЦЫ (менять на "Кухня 2", "Кухня 3" и т.д.) ========== -->
     <title>Кухня 1 | CatSpace Мебель</title>
     <link rel="stylesheet" href="../../../style.css">
     <style>
@@ -11,6 +10,7 @@
         .product-page .product-main { display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
         .product-page .product-main .gallery {
             flex: 1 1 400px;
+            cursor: pointer; /* курсор-рука, чтобы было понятно, что кликабельно */
         }
         .product-page .product-main .gallery img {
             width: 100%;
@@ -19,6 +19,10 @@
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             display: block;
+            transition: transform 0.2s;
+        }
+        .product-page .product-main .gallery img:hover {
+            transform: scale(1.01);
         }
         .product-page .product-main .info { flex: 1 1 400px; }
         .product-page .product-main .info h1 { font-size: 36px; margin-bottom: 15px; color: #2c3e2f; }
@@ -45,6 +49,47 @@
         .back-link { display: inline-block; margin-top: 30px; color: #2c3e2f; text-decoration: none; font-weight: bold; }
         .back-link:hover { text-decoration: underline; }
         @media (max-width: 768px) { .product-page .product-main { flex-direction: column; } }
+
+        /* --- СТИЛИ ДЛЯ ЛАЙТБОКСА --- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+            cursor: default;
+        }
+        .lightbox .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 1001;
+        }
+        .lightbox .close-btn:hover {
+            color: #d4b87a;
+        }
+        /* --- КОНЕЦ СТИЛЕЙ ДЛЯ ЛАЙТБОКСА --- */
     </style>
 </head>
 <body>
@@ -69,14 +114,11 @@
 <section class="product-page">
     <div class="container">
         <div class="product-main">
-            <div class="gallery">
-                <!-- ========== ПУТЬ К ОСНОВНОЙ КАРТИНКЕ (менять номер папки: 1 → 2, 3, ...) ========== -->
+            <div class="gallery" onclick="openLightbox('../../../images/kitchen-modular/1/main.png')">
                 <img src="../../../images/kitchen-modular/1/main.png" alt="Кухня 1">
             </div>
             <div class="info">
-                <!-- ========== НАЗВАНИЕ ТОВАРА (менять: Кухня 1 → Кухня 2, 3, ...) ========== -->
                 <h1>Кухня 1</h1>
-                <!-- ========== ЦЕНА (менять при необходимости) ========== -->
                 <div class="price">от 15 000 ₽</div>
                 <div class="description">
                     <p>Кухня для ценителей качества. Корпус из ЛДСП, фасады МДФ, доводчики.</p>
@@ -91,7 +133,6 @@
                         <li>🔹 Цвет: на выбор из .... оттенков</li>
                     </ul>
                 </div>
-                <!-- ========== НАЗВАНИЕ В КНОПКЕ (менять: Кухня 1 → Кухня 2, 3, ...) ========== -->
                 <button class="btn" onclick="addToCartAndGo('Кухня 1', 15000)">Добавить в заказ</button>
                 <br>
                 <a href="../economy.html" class="back-link">← Вернуться в каталог</a>
@@ -100,11 +141,10 @@
 
         <h3>Дополнительные фото</h3>
         <div class="additional-images">
-            <!-- ========== ПУТИ К ДОПОЛНИТЕЛЬНЫМ КАРТИНКАМ (менять номер папки: 1 → 2, 3, ...) ========== -->
-            <img src="../../../images/kitchen-modular/1/1.png" alt="Дополнительное фото 1" onerror="this.src='https://placehold.co/400x400?text=Фото+1'">
-            <img src="../../../images/kitchen-modular/1/2.png" alt="Дополнительное фото 2" onerror="this.src='https://placehold.co/400x400?text=Фото+2'">
-            <img src="../../../images/kitchen-modular/1/3.png" alt="Дополнительное фото 3" onerror="this.src='https://placehold.co/400x400?text=Фото+3'">
-            <img src="../../../images/kitchen-modular/1/4.png" alt="Дополнительное фото 4" onerror="this.src='https://placehold.co/400x400?text=Фото+4'">
+            <img src="../../../images/kitchen-modular/1/1.png" alt="Дополнительное фото 1" onclick="openLightbox('../../../images/kitchen-modular/1/1.png')" style="cursor: pointer;">
+            <img src="../../../images/kitchen-modular/1/2.png" alt="Дополнительное фото 2" onclick="openLightbox('../../../images/kitchen-modular/1/2.png')" style="cursor: pointer;">
+            <img src="../../../images/kitchen-modular/1/3.png" alt="Дополнительное фото 3" onclick="openLightbox('../../../images/kitchen-modular/1/3.png')" style="cursor: pointer;">
+            <img src="../../../images/kitchen-modular/1/4.png" alt="Дополнительное фото 4" onclick="openLightbox('../../../images/kitchen-modular/1/4.png')" style="cursor: pointer;">
         </div>
     </div>
 </section>
@@ -116,13 +156,49 @@
     </div>
 </footer>
 
+<!-- ========== ЛАЙТБОКС (модальное окно) ========== -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <span class="close-btn" onclick="closeLightbox(event)">&times;</span>
+    <img id="lightboxImg" src="" alt="Увеличенное изображение">
+</div>
+
 <script>
+    // ---- ФУНКЦИИ ДЛЯ ЛАЙТБОКСА ----
+    function openLightbox(src) {
+        const lightbox = document.getElementById('lightbox');
+        const img = document.getElementById('lightboxImg');
+        img.src = src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // запрещаем прокрутку страницы
+    }
+
+    function closeLightbox(event) {
+        // Закрываем только если клик на фоне или на крестике, не на картинке
+        const lightbox = document.getElementById('lightbox');
+        const img = document.getElementById('lightboxImg');
+        if (event.target === lightbox || event.target.classList.contains('close-btn')) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto'; // возвращаем прокрутку
+        }
+    }
+
+    // Закрытие по клавише ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+    });
+
+    // ---- ФУНКЦИИ КОРЗИНЫ ----
     function getCart() {
         try { return JSON.parse(localStorage.getItem('cart')) || []; } catch { return []; }
     }
     function saveCart(cart) { localStorage.setItem('cart', JSON.stringify(cart)); }
 
-    // ========== НАЗВАНИЕ И ЦЕНА В ФУНКЦИИ (менять: Кухня 1 → Кухня 2, 3, ...) ==========
     function addToCartAndGo(name, price) {
         let cart = getCart();
         cart.push({ name, price });
