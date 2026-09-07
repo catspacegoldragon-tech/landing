@@ -53,13 +53,15 @@
             display: block;
             text-decoration: none;
             color: inherit;
-            overflow: hidden; /* чтобы изображение не выходило за скруглённые углы */
+            /* Контейнер для картинки с точным соотношением сторон */
+            aspect-ratio: 1032 / 1523; /* соответствует вашим картинкам */
+            overflow: hidden;
+            background: transparent; /* убираем любой фон */
         }
-        /* === ИЗМЕНЕНИЯ ДЛЯ КАРТИНКИ === */
         .product-card .card-link img {
             width: 100%;
-            aspect-ratio: 1 / 1; /* квадратный контейнер */
-            object-fit: cover;   /* картинка заполняет всю область, обрезая лишнее */
+            height: 100%;
+            object-fit: contain; /* картинка помещается полностью без обрезания */
             display: block;
             background: transparent; /* убираем серый фон */
         }
