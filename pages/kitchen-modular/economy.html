@@ -30,11 +30,9 @@
             font-size: 14px;
             color: #555;
         }
-        /* Изменяем контейнер на flex */
         .product-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center; /* центрируем карточки */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-bottom: 40px;
         }
@@ -47,21 +45,18 @@
             padding-bottom: 20px;
             transition: transform 0.2s;
             cursor: pointer;
-            flex: 0 1 auto; /* не растягивается, ширина по содержимому */
-            max-width: 1100px; /* ограничиваем максимальную ширину */
-            width: auto; /* ширина определяется содержимым */
-            min-width: 280px; /* минимальная ширина для читаемости */
         }
         .product-card:hover {
             transform: translateY(-5px);
         }
+        /* Ссылка, обёртывающая всю карточку (кроме кнопки) */
         .product-card .card-link {
             display: block;
             text-decoration: none;
             color: inherit;
         }
         .product-card .card-link img {
-            width: 100%; /* изображение занимает всю ширину карточки */
+            width: 100%;
             height: auto;
             display: block;
             background-color: #f0f0f0;
@@ -139,14 +134,6 @@
         .back-link:hover { text-decoration: underline; }
         .cart-highlight { border: 2px solid #d4b87a; transition: border 0.3s; }
         section[id] { scroll-margin-top: 80px; }
-        /* Адаптивность: на маленьких экранах карточки занимают всю ширину */
-        @media (max-width: 768px) {
-            .product-card {
-                max-width: 100%;
-                min-width: 0;
-                width: 100%;
-            }
-        }
     </style>
 </head>
 <body>
@@ -301,7 +288,7 @@
     function renderProducts(filteredProducts) {
         const container = document.getElementById('productContainer');
         if (filteredProducts.length === 0) {
-            container.innerHTML = '<p style="width: 100%; text-align: center; padding: 40px;">Товаров не найдено</p>';
+            container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">Товаров не найдено</p>';
             return;
         }
         container.innerHTML = filteredProducts.map(p => `
