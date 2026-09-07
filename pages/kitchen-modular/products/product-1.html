@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кухня 1 | CatSpace Мебель</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../../style.css">
     <style>
         .product-page { padding: 40px 0; }
         .product-page .product-main { display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
@@ -29,16 +29,16 @@
 <header>
     <div class="container">
         <div class="logo">
-            <a href="index.html" style="text-decoration: none; color: inherit;">
+            <a href="../../../index.html" style="text-decoration: none; color: inherit;">
                 <h1>CatSpace Мебель</h1>
             </a>
             <p>Кухонные модули на заказ</p>
         </div>
         <nav class="navbar">
-            <a href="index.html">Главная</a>
-            <a href="index.html#catalog">Каталог</a>
-            <a href="index.html#about">О нас</a>
-            <a href="index.html#contact">Контакты</a>
+            <a href="../../../index.html">Главная</a>
+            <a href="../../../index.html#catalog">Каталог</a>
+            <a href="../../../index.html#about">О нас</a>
+            <a href="../../../index.html#contact">Контакты</a>
         </nav>
     </div>
 </header>
@@ -47,7 +47,7 @@
     <div class="container">
         <div class="product-main">
             <div class="gallery">
-                <img src="images/kitchen_test.png" alt="Кухня 1">
+                <img src="../../../images/kitchen_test.png" alt="Кухня 1">
             </div>
             <div class="info">
                 <h1>Кухня 1</h1>
@@ -67,16 +67,16 @@
                 </div>
                 <button class="btn" onclick="addToCartAndGo('Кухня 1', 15000)">Добавить в заказ</button>
                 <br>
-                <a href="economy.html" class="back-link">← Вернуться в каталог</a>
+                <a href="../economy.html" class="back-link">← Вернуться в каталог</a>
             </div>
         </div>
 
         <h3>Дополнительные фото</h3>
         <div class="additional-images">
-            <img src="images/elit-dop1.jpg" alt="Дополнительное фото 1" onerror="this.src='https://placehold.co/400x400?text=Фото+1'">
-            <img src="images/elit-dop2.jpg" alt="Дополнительное фото 2" onerror="this.src='https://placehold.co/400x400?text=Фото+2'">
-            <img src="images/elit-dop3.jpg" alt="Дополнительное фото 3" onerror="this.src='https://placehold.co/400x400?text=Фото+3'">
-            <img src="images/elit-dop4.jpg" alt="Дополнительное фото 4" onerror="this.src='https://placehold.co/400x400?text=Фото+4'">
+            <img src="../../../images/elit-dop1.jpg" alt="Дополнительное фото 1" onerror="this.src='https://placehold.co/400x400?text=Фото+1'">
+            <img src="../../../images/elit-dop2.jpg" alt="Дополнительное фото 2" onerror="this.src='https://placehold.co/400x400?text=Фото+2'">
+            <img src="../../../images/elit-dop3.jpg" alt="Дополнительное фото 3" onerror="this.src='https://placehold.co/400x400?text=Фото+3'">
+            <img src="../../../images/elit-dop4.jpg" alt="Дополнительное фото 4" onerror="this.src='https://placehold.co/400x400?text=Фото+4'">
         </div>
     </div>
 </section>
@@ -98,7 +98,7 @@
         let cart = getCart();
         cart.push({ name, price });
         saveCart(cart);
-        window.location.href = 'economy.html#cartBlock';
+        window.location.href = '../economy.html#cartBlock';
     }
 </script>
 
