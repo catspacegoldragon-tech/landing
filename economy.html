@@ -156,7 +156,8 @@
         <form action="https://formsubmit.co/catspacegoldragon@gmail.com" method="POST" class="contact-form" id="contactForm">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_subject" value="Заявка с модульных кухонь">
-            <input type="hidden" name="_next" value="https://catspacegoldragon-tech.github.io/landing5/thanks.html">
+            <!-- ОТНОСИТЕЛЬНЫЙ ПУТЬ -->
+            <input type="hidden" name="_next" value="thanks.html">
             <input type="hidden" name="_template" value="table">
 
             <div class="form-group">
@@ -187,7 +188,6 @@
 </footer>
 
 <script>
-    // ---- ДАННЫЕ ТОВАРОВ (с числовым размером) ----
     const products = [
         { id: 1, name: 'КУХНЯ «АВИТО»', price: 15000, img: 'images/kitchen_test.png', size: 1200 },
         { id: 2, name: 'Модуль «Комфорт»', price: 120000, img: 'images/kitchen_test.png', size: 1500 },
@@ -200,7 +200,6 @@
         { id: 9, name: 'Модуль «Хай-тек»', price: 190000, img: 'images/kitchen_test.png', size: 2000 }
     ];
 
-    // ---- ФУНКЦИИ КОРЗИНЫ ----
     function getCart() {
         try { return JSON.parse(localStorage.getItem('cart')) || []; } catch { return []; }
     }
@@ -245,7 +244,6 @@
         totalEl.textContent = `Итого: ${total.toLocaleString()} ₽`;
     }
 
-    // ---- ОТОБРАЖЕНИЕ ТОВАРОВ ----
     function renderProducts(filteredProducts) {
         const container = document.getElementById('productContainer');
         if (filteredProducts.length === 0) {
@@ -265,7 +263,6 @@
         `).join('');
     }
 
-    // ---- ФИЛЬТРАЦИЯ ПО РАЗМЕРУ ----
     function applyFilters() {
         const size = document.getElementById('filterSize').value;
         const filtered = products.filter(p => {
@@ -275,7 +272,6 @@
         renderProducts(filtered);
     }
 
-    // ---- ПОДГОТОВКА КОММЕНТАРИЯ С ЦЕНАМИ ----
     function prepareMessage() {
         const cart = getCart();
         const messageField = document.getElementById('message');
@@ -295,7 +291,6 @@
         prepareMessage();
     });
 
-    // ---- ЗАГРУЗКА СТРАНИЦЫ ----
     window.onload = function() {
         renderCart();
         renderProducts(products);
