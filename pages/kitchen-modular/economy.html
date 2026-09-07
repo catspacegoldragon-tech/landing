@@ -45,6 +45,8 @@
             padding-bottom: 20px;
             transition: transform 0.2s;
             cursor: pointer;
+            display: flex;
+            flex-direction: column; /* чтобы текст шёл под картинкой */
         }
         .product-card:hover {
             transform: translateY(-5px);
@@ -53,17 +55,17 @@
             display: block;
             text-decoration: none;
             color: inherit;
-            /* Контейнер для картинки с точным соотношением сторон */
             aspect-ratio: 1032 / 1523; /* соответствует вашим картинкам */
             overflow: hidden;
-            background: transparent; /* убираем любой фон */
+            background: transparent;
+            flex-shrink: 0; /* чтобы картинка не сжималась */
         }
         .product-card .card-link img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* картинка помещается полностью без обрезания */
+            object-fit: contain;
             display: block;
-            background: transparent; /* убираем серый фон */
+            background: transparent;
         }
         .product-card h3 {
             font-size: 22px;
@@ -88,6 +90,7 @@
             transition: background 0.3s;
             position: relative;
             z-index: 2;
+            margin-top: 5px; /* чтобы не прилипало к тексту */
         }
         .btn-order:hover {
             background-color: #4a6741;
