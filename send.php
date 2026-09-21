@@ -2,8 +2,8 @@
 // ============================================================
 // НАСТРОЙКИ
 // ============================================================
-$to        = "catspacegoldragon@gmail.com";         // Куда отправлять заявки
-$from      = "zayavki@xn--80ajmebqcrka4a.xn--p1ai"; // От кого (для отображения)
+$to        = "catspacegoldragon@gmail.com";
+$from      = "zayavki@xn--80ajmebqcrka4a.xn--p1ai";
 $from_name = "ВИРАД Мебель";
 $subject   = "Новая заявка с сайта ВИРАД";
 
@@ -26,7 +26,7 @@ if ($name === "" || $phone === "") {
 }
 
 // ============================================================
-// ФОРМИРУЕМ ПИСЬМО
+// ТЕЛО ПИСЬМА
 // ============================================================
 $body  = "Новая заявка с сайта ВИРАД\n";
 $body .= "================================\n\n";
@@ -38,15 +38,13 @@ $body .= "Дата: " . date("d.m.Y H:i") . "\n";
 $body .= "IP: " . $_SERVER["REMOTE_ADDR"] . "\n";
 
 // ============================================================
-// ЗАГОЛОВКИ (снижаем шанс попадания в спам)
+// ЗАГОЛОВКИ
 // ============================================================
 $headers  = "From: =?UTF-8?B?" . base64_encode($from_name) . "?= <$from>\r\n";
 $headers .= "Reply-To: $from\r\n";
-$headers .= "Return-Path: $from\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 $headers .= "Content-Transfer-Encoding: base64\r\n";
-$headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
 $encoded_body    = chunk_split(base64_encode($body));
 $encoded_subject = "=?UTF-8?B?" . base64_encode($subject) . "?=";
@@ -54,13 +52,7 @@ $encoded_subject = "=?UTF-8?B?" . base64_encode($subject) . "?=";
 // ============================================================
 // ОТПРАВКА
 // ============================================================
-$result = mail(
-    $to,
-    $encoded_subject,
-    $encoded_body,
-    $headers,
-    "-f$from"  // envelope sender — важно для доставки
-);
+$result = mail($to, $encoded_subject, $encoded_body, $headers);
 
 if ($result) {
     header("Location: /thanks.html");
