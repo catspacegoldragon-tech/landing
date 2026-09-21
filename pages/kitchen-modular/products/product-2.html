@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кухня 1 | ВИРАД Мебель</title>
+    <title>Кухня 2 | ВИРАД Мебель</title>
     <link rel="stylesheet" href="../../../style.css">
     <style>
         .product-page { padding: 40px 0; }
@@ -14,7 +14,9 @@
         }
         .product-page .product-main .gallery img {
             width: 100%;
-            height: auto;
+            aspect-ratio: 3 / 4;
+            max-width: 1200px;
+            max-height: 1600px;
             object-fit: contain;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -39,7 +41,9 @@
         }
         .product-page .additional-images img {
             width: 100%;
-            height: auto;
+            aspect-ratio: 3 / 4;
+            max-width: 1200px;
+            max-height: 1600px;
             object-fit: contain;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -55,14 +59,11 @@
         .back-link:hover { text-decoration: underline; }
         @media (max-width: 768px) { .product-page .product-main { flex-direction: column; } }
 
-        /* --- ЛАЙТБОКС --- */
         .lightbox {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.85);
             z-index: 1000;
             justify-content: center;
@@ -70,9 +71,7 @@
             cursor: pointer;
             user-select: none;
         }
-        .lightbox.active {
-            display: flex;
-        }
+        .lightbox.active { display: flex; }
         .lightbox .lightbox-content {
             display: flex;
             align-items: center;
@@ -92,8 +91,7 @@
         }
         .lightbox .close-btn {
             position: fixed;
-            top: 20px;
-            right: 30px;
+            top: 20px; right: 30px;
             font-size: 40px;
             color: white;
             font-weight: bold;
@@ -101,9 +99,7 @@
             transition: 0.3s;
             z-index: 1001;
         }
-        .lightbox .close-btn:hover {
-            color: #d4b87a;
-        }
+        .lightbox .close-btn:hover { color: #d4b87a; }
         .lightbox .nav-btn {
             font-size: 50px;
             color: white;
@@ -116,10 +112,7 @@
             flex-shrink: 0;
             line-height: 1;
         }
-        .lightbox .nav-btn:hover {
-            background: rgba(0,0,0,0.7);
-            color: #d4b87a;
-        }
+        .lightbox .nav-btn:hover { background: rgba(0,0,0,0.7); color: #d4b87a; }
         .lightbox .counter {
             position: fixed;
             bottom: 30px;
@@ -132,7 +125,6 @@
             border-radius: 20px;
             z-index: 1001;
         }
-        /* --- КОНЕЦ ЛАЙТБОКСА --- */
     </style>
 </head>
 <body>
@@ -199,7 +191,6 @@
     </div>
 </footer>
 
-<!-- ========== ЛАЙТБОКС ========== -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
     <span class="close-btn" onclick="closeLightbox(event)">&times;</span>
     <div class="lightbox-content" onclick="event.stopPropagation();">
@@ -211,7 +202,6 @@
 </div>
 
 <script>
-    // ======== МАССИВ ВСЕХ КАРТИНОК ========
     const productImages = [
         '../../../images/kitchen-modular/2/main.jpg',
         '../../../images/kitchen-modular/2/1.jpg',
@@ -221,7 +211,6 @@
     ];
     let currentIndex = 0;
 
-    // ======== ФУНКЦИИ ЛАЙТБОКСА ========
     function openLightbox(index) {
         currentIndex = index;
         const lightbox = document.getElementById('lightbox');
@@ -260,7 +249,6 @@
         document.getElementById('lightboxCounter').textContent = (currentIndex + 1) + ' / ' + productImages.length;
     }
 
-    // Закрытие по Escape
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             const lightbox = document.getElementById('lightbox');
@@ -271,7 +259,6 @@
         }
     });
 
-    // ======== ФУНКЦИИ КОРЗИНЫ ========
     function getCart() {
         try { return JSON.parse(localStorage.getItem('cart')) || []; } catch { return []; }
     }
