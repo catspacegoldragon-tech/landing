@@ -51,7 +51,6 @@
         .product-card:hover {
             transform: translateY(-5px);
         }
-        /* Блок с картинкой – соотношение 3:4, максимум 1200×1600 */
         .product-card .card-link {
             display: block;
             text-decoration: none;
@@ -72,7 +71,6 @@
             display: block;
             background: transparent;
         }
-        /* Текст под картинкой */
         .product-card .card-text {
             padding: 12px 15px 5px;
             flex-grow: 1;
@@ -214,12 +212,7 @@
         <h2>Оформить заказ</h2>
         <p>Заполните форму, и мы свяжемся с вами для уточнения деталей.</p>
 
-        <form action="https://formsubmit.co/catspacegoldragon@gmail.com" method="POST" class="contact-form" id="contactForm">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_subject" value="Заявка с модульных кухонь">
-            <input type="hidden" name="_next" value="https://catspacegoldragon-tech.github.io/landing/thanks.html">
-            <input type="hidden" name="_template" value="table">
-
+        <form action="../../send.php" method="POST" class="contact-form" id="contactForm">
             <div class="form-group">
                 <label for="name">Ваше имя</label>
                 <input type="text" id="name" name="name" placeholder="Анна" required>
@@ -243,13 +236,13 @@
 <footer>
     <div class="container">
         <p>&copy; 2026 ВИРАД Мебель. Разработка кухонных модулей и чертежей.</p>
-        <p>Email: ВИРАД@example.com | Тел: +7 (999) 123-45-67</p>
+        <p>Email: zayavki@вирадмебель.рф | Тел: +7 (999) 123-45-67</p>
     </div>
 </footer>
 
 <script>
     const products = [
-        { id: 1, name: 'Кухня 1', price: 15000, img: '../../images/kitchen-modular/1/main.png', size: 1600 },
+        { id: 1, name: 'Кухня 1', price: 15000, img: '../../images/kitchen-modular/1/main.jpg', size: 1600 },
         { id: 2, name: 'Кухня 2', price: 120000, img: '../../images/kitchen-modular/2/main.jpg', size: 1500 },
         { id: 3, name: 'Кухня 3', price: 210000, img: '../../images/kitchen-modular/3/main.png', size: 1800 },
         { id: 4, name: 'Кухня 4', price: 55000, img: '../../images/kitchen-modular/4/main.png', size: 1100 },
