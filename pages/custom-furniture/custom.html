@@ -3,51 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мебель на заказ | ВИРАД Мебель</title>
+    <title>Мебель на заказ | ВИРАД мебель</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin: 40px 0; }
         .product-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            text-align: center;
-            padding-bottom: 20px;
-            transition: transform 0.2s;
+            background: white; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;
+            padding-bottom: 20px; transition: transform 0.2s;
         }
         .product-card:hover { transform: translateY(-5px); }
-        .product-card img {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: contain;
-            background-color: #f0f0f0;
-        }
-        .product-card h3 {
-            font-size: 22px;
-            margin: 15px 0 5px;
-        }
-        .product-card p {
-            padding: 0 15px 15px;
-            color: #666;
-        }
-        .product-card a {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-        }
-        .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            color: #2c3e2f;
-            text-decoration: none;
-            font-weight: bold;
-        }
+        .product-card img { width: 100%; aspect-ratio: 1/1; object-fit: contain; background-color: #f0f0f0; }
+        .product-card h3 { font-size: 22px; margin: 15px 0 5px; color: var(--color-secondary); }
+        .product-card p { padding: 0 15px 15px; color: #666; }
+        .product-card a { display: block; text-decoration: none; color: inherit; }
+        .back-link { display: inline-block; margin-top: 20px; color: var(--color-secondary); text-decoration: none; font-weight: bold; }
         .back-link:hover { text-decoration: underline; }
         section[id] { scroll-margin-top: 80px; }
     </style>
@@ -58,9 +28,9 @@
     <div class="container">
         <div class="logo">
             <a href="../../index.html" style="text-decoration: none; color: inherit;">
-                <h1>ВИРАД Мебель</h1>
+                <h1>ВИРАД</h1>
             </a>
-            <p>Кухонные модули на заказ</p>
+            <p>мебель</p>
         </div>
         <nav class="navbar">
             <a href="../../index.html">Главная</a>
@@ -84,23 +54,22 @@
     <div class="product-grid">
         <div class="product-card">
             <a href="../../kitchen-modular/products/product-1.html">
-                <img src="../../images/kitchen_test.png" alt="Проект 1" onerror="this.src='https://placehold.co/300x200?text=Проект+1'">
+                <img src="../../images/kitchen_test.png" alt="Проект 1" onerror="this.src='https://placehold.co/300x400?text=Проект+1'">
                 <h3>Кухня «Авито»</h3>
                 <p>Современный стиль, эргономичное решение</p>
             </a>
         </div>
-        <!-- Добавьте остальные карточки по аналогии -->
     </div>
 
-    <!-- ===== ФОРМА (скопирована из economy.html, работает 100%) ===== -->
     <section id="contact" class="contact">
         <h2>Оставить заявку</h2>
         <p>Опишите вашу идею, и мы свяжемся с вами для консультации</p>
 
         <form action="https://formsubmit.co/catspacegoldragon@gmail.com" method="POST" class="contact-form" id="contactForm">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_subject" value="Заявка на индивидуальную мебель">
-            <input type="hidden" name="_next" value="https://catspacegoldragon-tech.github.io/landing/thanks.html">
+            <input type="hidden" name="_subject" value="Заявка на индивидуальную мебель ВИРАД">
+            <!-- ОТНОСИТЕЛЬНЫЙ ПУТЬ -->
+            <input type="hidden" name="_next" value="../../thanks.html">
             <input type="hidden" name="_template" value="table">
 
             <div class="form-group">
@@ -125,11 +94,10 @@
 
 <footer>
     <div class="container">
-        <p>&copy; 2026 ВИРАД Мебель. Разработка кухонных модулей и чертежей.</p>
-        <p>Email: ВИРАД@example.com | Тел: +7 (999) 123-45-67</p>
+        <p>&copy; 2026 ВИРАД мебель. Разработка кухонных модулей и чертежей.</p>
+        <p>Email: catspace@example.com | Тел: +7 (999) 123-45-67</p>
     </div>
 </footer>
 
-<!-- Никакого лишнего JavaScript, форма отправляется стандартно -->
 </body>
 </html>
