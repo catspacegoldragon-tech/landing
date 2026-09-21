@@ -2,13 +2,18 @@
 // ============================================================
 // НАСТРОЙКИ
 // ============================================================
-$to        = "zayavki@вирадмебель.рф";
-$from      = "zayavki@вирадмебель.рф";
+// Домен в punycode (кириллица → латиница):
+// вирадмебель.рф = xn--80ajmebqcrka4a.xn--p1ai
+$to        = "zayavki@xn--80ajmebqcrka4a.xn--p1ai";
+$from      = "zayavki@xn--80ajmebqcrka4a.xn--p1ai";
 $from_name = "ВИРАД Мебель";
 $subject   = "Новая заявка с сайта ВИРАД";
 
+// Логирование (файл создастся автоматически рядом с send.php)
+$log_file = __DIR__ . "/mail.log";
+
 // ============================================================
-// ПРОВЕРКА
+// ПРОВЕРКА МЕТОДА
 // ============================================================
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     http_response_code(403);
@@ -46,15 +51,21 @@ $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 $headers .= "Content-Transfer-Encoding: base64\r\n";
 
-$encoded_body = chunk_split(base64_encode($body));
+$encoded_body    = chunk_split(base64_encode($body));
 $encoded_subject = "=?UTF-8?B?" . base64_encode($subject) . "?=";
 
 // ============================================================
 // ОТПРАВКА
 // ============================================================
-if (mail($to, $encoded_subject, $encoded_body, $headers)) {
+$result = mail($to, $encoded_subject, $encoded_body, $headers);
+
+// Логируем результат
+$log_message = date("Y-m-d H:i:s") . " | " . ($result ? "OK" : "FAIL") . " | $name | $phone | $to\n";
+@file_put_contents($log_file, $log_message, FILE_APPEND);
+
+if ($result) {
     header("Location: /thanks.html");
     exit;
 } else {
-    echo "Ошибка отправки через mail(). Проверьте настройки почты в панели NetAngels.";
+    echo "Ошибка отправки письма. Попробуйте позвонить нам напрямую.";
 }
