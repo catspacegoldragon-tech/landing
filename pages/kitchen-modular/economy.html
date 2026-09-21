@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кухни модульные | ВИРАД Мебель</title>
+    <title>Кухни модульные | ВИРАД мебель</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
         .filters {
@@ -46,21 +46,24 @@
             cursor: pointer;
             display: flex;
             flex-direction: column;
-            padding-bottom: 15px; /* отступ снизу */
+            padding-bottom: 15px;
         }
         .product-card:hover {
             transform: translateY(-5px);
         }
-        /* Блок с картинкой – сохраняет пропорции */
+        /* ===== КОНТЕЙНЕР КАРТИНКИ 3:4, МАКС 1200x1600 ===== */
         .product-card .card-link {
             display: block;
             text-decoration: none;
             color: inherit;
-            aspect-ratio: 1032 / 1523; /* пропорции ваших картинок */
+            aspect-ratio: 3 / 4;
+            max-width: 1200px;
+            max-height: 1600px;
             overflow: hidden;
             background: transparent;
-            flex-shrink: 0; /* не сжимается */
+            flex-shrink: 0;
             width: 100%;
+            margin: 0 auto;
         }
         .product-card .card-link img {
             width: 100%;
@@ -69,10 +72,9 @@
             display: block;
             background: transparent;
         }
-        /* Текст под картинкой */
         .product-card .card-text {
             padding: 12px 15px 5px;
-            flex-grow: 1; /* занимает оставшееся место */
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -81,11 +83,12 @@
             font-size: 22px;
             margin: 0 0 5px;
             font-weight: 600;
+            color: var(--color-secondary);
         }
         .product-card .price {
             font-size: 20px;
             font-weight: bold;
-            color: #b8860b;
+            color: var(--color-primary);
             margin: 0 0 5px;
         }
         .product-card .size {
@@ -94,7 +97,7 @@
             margin: 0 0 10px;
         }
         .btn-order {
-            background-color: #2c3e2f;
+            background-color: var(--color-primary);
             color: white;
             border: none;
             padding: 8px 20px;
@@ -103,11 +106,11 @@
             transition: background 0.3s;
             position: relative;
             z-index: 2;
-            align-self: center; /* центрируем кнопку */
-            margin-top: auto; /* прижимаем к низу, если нужно */
+            align-self: center;
+            margin-top: auto;
         }
         .btn-order:hover {
-            background-color: #4a6741;
+            background-color: var(--color-primary-dark);
         }
         .cart-block {
             background: #fff;
@@ -126,7 +129,7 @@
         .cart-item .remove-btn {
             background: none;
             border: none;
-            color: #c0392b;
+            color: var(--color-primary);
             font-size: 18px;
             cursor: pointer;
         }
@@ -135,6 +138,7 @@
             font-size: 18px;
             margin-top: 10px;
             text-align: right;
+            color: var(--color-secondary);
         }
         .cart-empty {
             color: #999;
@@ -144,12 +148,12 @@
         .back-link {
             display: inline-block;
             margin-top: 20px;
-            color: #2c3e2f;
+            color: var(--color-secondary);
             text-decoration: none;
             font-weight: bold;
         }
         .back-link:hover { text-decoration: underline; }
-        .cart-highlight { border: 2px solid #d4b87a; transition: border 0.3s; }
+        .cart-highlight { border: 2px solid var(--color-primary); transition: border 0.3s; }
         section[id] { scroll-margin-top: 80px; }
     </style>
 </head>
@@ -159,9 +163,9 @@
     <div class="container">
         <div class="logo">
             <a href="../../index.html" style="text-decoration: none; color: inherit;">
-                <h1>ВИРАД Мебель</h1>
+                <h1>ВИРАД</h1>
             </a>
-            <p>Кухонные модули на заказ</p>
+            <p>мебель</p>
         </div>
         <nav class="navbar">
             <a href="../../index.html">Главная</a>
@@ -213,8 +217,9 @@
 
         <form action="https://formsubmit.co/catspacegoldragon@gmail.com" method="POST" class="contact-form" id="contactForm">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_subject" value="Заявка с модульных кухонь">
-            <input type="hidden" name="_next" value="https://catspacegoldragon-tech.github.io/landing/thanks.html">
+            <input type="hidden" name="_subject" value="Заявка с модульных кухонь ВИРАД">
+            <!-- ОТНОСИТЕЛЬНЫЙ ПУТЬ -->
+            <input type="hidden" name="_next" value="../../thanks.html">
             <input type="hidden" name="_template" value="table">
 
             <div class="form-group">
@@ -239,22 +244,22 @@
 
 <footer>
     <div class="container">
-        <p>&copy; 2026 ВИРАД Мебель. Разработка кухонных модулей и чертежей.</p>
-        <p>Email: ВИРАД@example.com | Тел: +7 (999) 123-45-67</p>
+        <p>&copy; 2026 ВИРАД мебель. Разработка кухонных модулей и чертежей.</p>
+        <p>Email: catspace@example.com | Тел: +7 (999) 123-45-67</p>
     </div>
 </footer>
 
 <script>
     const products = [
-        { id: 1, name: 'Кухня 1', price: 15000, img: '../../images/kitchen-modular/1/main.png', size: 1600 },
+        { id: 1, name: 'Кухня 1', price: 15000, img: '../../images/kitchen-modular/1/main.png', size: 1200 },
         { id: 2, name: 'Кухня 2', price: 120000, img: '../../images/kitchen-modular/2/main.jpg', size: 1500 },
-        { id: 3, name: 'Кухня 3', price: 210000, img: '../../images/kitchen-modular/3/main.png', size: 1800 },
-        { id: 4, name: 'Кухня 4', price: 55000, img: '../../images/kitchen-modular/4/main.png', size: 1100 },
-        { id: 5, name: 'Кухня 5', price: 95000, img: '../../images/kitchen-modular/5/main.png', size: 1400 },
-        { id: 6, name: 'Кухня 6', price: 110000, img: '../../images/kitchen-modular/6/main.png', size: 1600 },
-        { id: 7, name: 'Кухня 7', price: 78000, img: '../../images/kitchen-modular/7/main.png', size: 1200 },
-        { id: 8, name: 'Кухня 8', price: 160000, img: '../../images/kitchen-modular/8/main.png', size: 1700 },
-        { id: 9, name: 'Кухня 9', price: 190000, img: '../../images/kitchen-modular/9/main.png', size: 2000 }
+        { id: 3, name: 'Кухня 3', price: 210000, img: '../../images/kitchen-modular/3/main.jpg', size: 1800 },
+        { id: 4, name: 'Кухня 4', price: 55000, img: '../../images/kitchen-modular/4/main.jpg', size: 1100 },
+        { id: 5, name: 'Кухня 5', price: 95000, img: '../../images/kitchen-modular/5/main.jpg', size: 1400 },
+        { id: 6, name: 'Кухня 6', price: 110000, img: '../../images/kitchen-modular/6/main.jpg', size: 1600 },
+        { id: 7, name: 'Кухня 7', price: 78000, img: '../../images/kitchen-modular/7/main.jpg', size: 1200 },
+        { id: 8, name: 'Кухня 8', price: 160000, img: '../../images/kitchen-modular/8/main.jpg', size: 1700 },
+        { id: 9, name: 'Кухня 9', price: 190000, img: '../../images/kitchen-modular/9/main.jpg', size: 2000 }
     ];
 
     function getCart() {
@@ -311,7 +316,7 @@
         container.innerHTML = filteredProducts.map(p => `
             <div class="product-card">
                 <a href="products/product-${p.id}.html" class="card-link">
-                    <img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/300x200?text=${p.name}'">
+                    <img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/300x400?text=${p.name}'">
                 </a>
                 <div class="card-text">
                     <h3>${p.name}</h3>
