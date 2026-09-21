@@ -192,6 +192,7 @@
     </div>
 </footer>
 
+<!-- ========== ЛАЙТБОКС ========== -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
     <span class="close-btn" onclick="closeLightbox(event)">&times;</span>
     <div class="lightbox-content" onclick="event.stopPropagation();">
@@ -203,6 +204,7 @@
 </div>
 
 <script>
+    // ======== МАССИВ ВСЕХ КАРТИНОК ========
     const productImages = [
         '../../../images/kitchen-modular/1/main.jpg',
         '../../../images/kitchen-modular/1/1.jpg',
@@ -212,6 +214,7 @@
     ];
     let currentIndex = 0;
 
+    // ======== ЛАЙТБОКС ========
     function openLightbox(index) {
         currentIndex = index;
         const lightbox = document.getElementById('lightbox');
@@ -260,14 +263,32 @@
         }
     });
 
+    // ======== КОРЗИНА (с объединением одинаковых товаров) ========
     function getCart() {
-        try { return JSON.parse(localStorage.getItem('cart')) || []; } catch { return []; }
+        try {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            // Миграция старого формата → новый (с qty)
+            cart = cart.map(item => ({
+                name: item.name,
+                price: item.price,
+                qty: item.qty || 1
+            }));
+            return cart;
+        } catch { return []; }
     }
-    function saveCart(cart) { localStorage.setItem('cart', JSON.stringify(cart)); }
+
+    function saveCart(cart) {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
 
     function addToCartAndGo(name, price) {
         let cart = getCart();
-        cart.push({ name, price });
+        const existing = cart.find(item => item.name === name);
+        if (existing) {
+            existing.qty += 1;
+        } else {
+            cart.push({ name, price, qty: 1 });
+        }
         saveCart(cart);
         window.location.href = '../economy.html#cartBlock';
     }
