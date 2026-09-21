@@ -24,13 +24,16 @@
         .product-card:hover { transform: translateY(-5px); }
         .product-card img {
             width: 100%;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 3 / 4;
+            max-width: 1200px;
+            max-height: 1600px;
             object-fit: contain;
             background-color: #f0f0f0;
         }
         .product-card h3 {
             font-size: 22px;
             margin: 15px 0 5px;
+            color: #2c3e2f;
         }
         .product-card p {
             padding: 0 15px 15px;
@@ -84,7 +87,7 @@
     <div class="product-grid">
         <div class="product-card">
             <a href="../../kitchen-modular/products/product-1.html">
-                <img src="../../images/kitchen_test.png" alt="Проект 1" onerror="this.src='https://placehold.co/300x200?text=Проект+1'">
+                <img src="../../images/kitchen_test.png" alt="Проект 1" onerror="this.src='https://placehold.co/300x400?text=Проект+1'">
                 <h3>Кухня «Авито»</h3>
                 <p>Современный стиль, эргономичное решение</p>
             </a>
@@ -92,17 +95,11 @@
         <!-- Добавьте остальные карточки по аналогии -->
     </div>
 
-    <!-- ===== ФОРМА (скопирована из economy.html, работает 100%) ===== -->
     <section id="contact" class="contact">
         <h2>Оставить заявку</h2>
         <p>Опишите вашу идею, и мы свяжемся с вами для консультации</p>
 
-        <form action="https://formsubmit.co/catspacegoldragon@gmail.com" method="POST" class="contact-form" id="contactForm">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_subject" value="Заявка на индивидуальную мебель">
-            <input type="hidden" name="_next" value="https://catspacegoldragon-tech.github.io/landing/thanks.html">
-            <input type="hidden" name="_template" value="table">
-
+        <form action="../../send.php" method="POST" class="contact-form" id="contactForm">
             <div class="form-group">
                 <label for="name">Ваше имя</label>
                 <input type="text" id="name" name="name" placeholder="Анна" required>
@@ -126,10 +123,9 @@
 <footer>
     <div class="container">
         <p>&copy; 2026 ВИРАД Мебель. Разработка кухонных модулей и чертежей.</p>
-        <p>Email: ВИРАД@example.com | Тел: +7 (999) 123-45-67</p>
+        <p>Email: zayavki@вирадмебель.рф | Тел: +7 (999) 123-45-67</p>
     </div>
 </footer>
 
-<!-- Никакого лишнего JavaScript, форма отправляется стандартно -->
 </body>
 </html>
