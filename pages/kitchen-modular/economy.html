@@ -46,20 +46,23 @@
             cursor: pointer;
             display: flex;
             flex-direction: column;
-            padding-bottom: 15px; /* отступ снизу */
+            padding-bottom: 15px;
         }
         .product-card:hover {
             transform: translateY(-5px);
         }
-        /* Блок с картинкой – сохраняет пропорции */
+        /* Блок с картинкой – соотношение 3:4, максимум 1200×1600 */
         .product-card .card-link {
             display: block;
             text-decoration: none;
             color: inherit;
-            aspect-ratio: 1032 / 1523; /* пропорции ваших картинок */
+            aspect-ratio: 3 / 4;
+            max-width: 1200px;
+            max-height: 1600px;
+            margin: 0 auto;
             overflow: hidden;
             background: transparent;
-            flex-shrink: 0; /* не сжимается */
+            flex-shrink: 0;
             width: 100%;
         }
         .product-card .card-link img {
@@ -72,7 +75,7 @@
         /* Текст под картинкой */
         .product-card .card-text {
             padding: 12px 15px 5px;
-            flex-grow: 1; /* занимает оставшееся место */
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -103,8 +106,8 @@
             transition: background 0.3s;
             position: relative;
             z-index: 2;
-            align-self: center; /* центрируем кнопку */
-            margin-top: auto; /* прижимаем к низу, если нужно */
+            align-self: center;
+            margin-top: auto;
         }
         .btn-order:hover {
             background-color: #4a6741;
@@ -311,7 +314,7 @@
         container.innerHTML = filteredProducts.map(p => `
             <div class="product-card">
                 <a href="products/product-${p.id}.html" class="card-link">
-                    <img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/300x200?text=${p.name}'">
+                    <img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/300x400?text=${p.name}'">
                 </a>
                 <div class="card-text">
                     <h3>${p.name}</h3>
