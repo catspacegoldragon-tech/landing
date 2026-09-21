@@ -253,17 +253,40 @@
         { id: 9, name: 'Кухня 9', price: 190000, img: '../../images/kitchen-modular/9/main.png', size: 2000 }
     ];
 
+    // ---- КОРЗИНА (с количеством и объединением одинаковых) ----
     function getCart() {
-        try { return JSON.parse(localStorage.getItem('cart')) || []; } catch { return []; }
+        try {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            // Миграция старого формата (без qty) → новый
+            cart = cart.map(item => ({
+                name: item.name,
+                price: item.price,
+                qty: item.qty || 1
+            }));
+            return cart;
+        } catch { return []; }
     }
-    function saveCart(cart) { localStorage.setItem('cart', JSON.stringify(cart)); }
+
+    function saveCart(cart) {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
 
     function addToCart(name, price, event) {
         if (event) event.stopPropagation();
         let cart = getCart();
-        cart.push({ name, price });
+
+        // Ищем товар с таким же именем
+        const existing = cart.find(item => item.name === name);
+
+        if (existing) {
+            existing.qty += 1; // увеличиваем количество
+        } else {
+            cart.push({ name, price, qty: 1 });
+        }
+
         saveCart(cart);
         renderCart();
+
         document.getElementById('cartBlock').scrollIntoView({ behavior: 'smooth' });
         const cartBlock = document.getElementById('cartBlock');
         cartBlock.classList.add('cart-highlight');
@@ -281,16 +304,20 @@
         const cart = getCart();
         const container = document.getElementById('cartItems');
         const totalEl = document.getElementById('cartTotal');
+
         if (cart.length === 0) {
             container.innerHTML = '<div class="cart-empty">Корзина пуста</div>';
             totalEl.textContent = 'Итого: 0 ₽';
             return;
         }
+
         let html = '', total = 0;
         cart.forEach((item, idx) => {
-            total += item.price;
+            const subtotal = item.price * item.qty;
+            total += subtotal;
+            const qtyLabel = item.qty > 1 ? ` (${item.qty} шт.)` : '';
             html += `<div class="cart-item">
-                <span>${item.name} — ${item.price.toLocaleString()} ₽</span>
+                <span>${item.name}${qtyLabel} — ${subtotal.toLocaleString()} ₽</span>
                 <button class="remove-btn" onclick="removeFromCart(${idx})">✕</button>
             </div>`;
         });
@@ -332,7 +359,11 @@
         const cart = getCart();
         const messageField = document.getElementById('message');
         if (cart.length > 0) {
-            const items = cart.map(item => item.name + ' — ' + item.price.toLocaleString() + ' ₽').join(', ');
+            const items = cart.map(item => {
+                const qtyLabel = item.qty > 1 ? ` (${item.qty} шт.)` : '';
+                const subtotal = item.price * item.qty;
+                return item.name + qtyLabel + ' — ' + subtotal.toLocaleString() + ' ₽';
+            }).join(', ');
             const userText = messageField.value.trim();
             if (userText.length > 0) {
                 messageField.value = userText + '\n\nЗаказ товаров: ' + items;
